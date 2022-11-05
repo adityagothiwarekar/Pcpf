@@ -1,0 +1,322 @@
+Don Bosco Institute of Technology
+DEPARTMENT OF INFORMATION TECHNOLOGY
+ITC305 Computer Programming Paradigms Lab
+
+SEMESTER III (Academic Year 2022 — 23)
+
+Programs by Prof. Udaychandra Nayak
+
+List of programs in Haskell & PROLOG
+
+ 
+
+Show how the library function last that selects the last element of a nonempty list could be defined in terms of
+
+the library functions such as head, reverse and ! ! Forexample, last [1,2,3,4,5] = 5.
+last xs = head (reverse xs)
+
+(OR)
+
+last xs = xs !! (length xs - 1)
+
+The library function init removes the last element from a non-empty list; for example, init [1,2,3,4,5] =
+[1,2,3,4]. Show how init could similarly be defined in two different ways.
+
+init xs = take (length xs - 1) xs
+(OR)
+init xs = reverse (tail (reverse xs))
+
+Decide if an integer is even:
+even n-=n “mod* 2 ==
+Split a list at the nth element:
+
+splitAt :: Int -> [a] -> ([al, [al])
+splitAt_ n xs = (take n xs, drop n xs)
+
+Returns the absolute value of an integer:
+
+abs o:: Int -> Int
+
+abs n= if n >= 0 then n else -n
+Returns the sign of an integer:
+signum :: Int -> Int
+
+signum n= if n < 0 then -1 else
+if n == 0 then 0 else 1
+10.
+
+(OR Using Guarded Equations)
+
+signum :: Int -> Int
+signum n | n< 0 = -1
+|} n= = 0
+| otherwise = 1
+Add two numbers
+add_o:: Int -> Int -> Int
+add x y=x+t+y
+Using library functions, define a function halve :: [a] -> ([a], [a]) that splits an even-lengthed list
+into two halves. For example:
+>halve [1, 2, 3, 4, 5, 6]
+([1, 2, 3], [4, 5, 6])
+halve :: [a] -> ([a], [a])
+halve xs = (take n xs, drop n xs)
+where n = length xs ‘div’ 2
+(OR)
+halve :: [a] -> ([a], [a])
+
+halve xs = splitAt (length xs ‘div’ 2) xs
+
+Define a function third :: [a] -> a that retums the third element in a list using
+a. Head and tail
+b. List indexing !!
+
+Using Head and tail:
+
+third :: [a] —> a
+third xs = head (tail (tail xs))
+
+Using List indexing:
+
+third :: [a] —> a
+
+third xs = xs !! 2
+
+Consider a function safetail :: [a] — [a] that behaves as the library function tail, except that safetail
+
+maps the empty list to itself, whereas tai! produces an error in this case. Define safetail using:
+a. aconditional expression;
+b. guarded equations;
+c. pattern matching.
+
+Hint: make use of the library function null.
+
+Using conditional expression:
+safetail :: [a] - [a]
+safetail xs = if null xs then [] else tail xs
+11.
+
+12.
+
+13.
+
+14.
+
+Using guarded equations:
+
+safetail :: [a] 3 [a]
+safetail xs | null xs = []
+| otherwise = tail xs
+
+Using pattern matching:
+
+safetail :: [a] - [a]
+safetail [] = []
+safetail (_:xs) = xs
+
+Write a program to print prime numbers up to n.
+
+factors :: Int -> [Int]
+
+factors n = [x | x <- [1..n], n ‘“mod* x == 0]
+
+prime :: Int -> Bool
+
+prime n = factors n == [1,n]
+
+primes :: Int -> [Int]
+
+primes n = [x | x <- [2..n], prime x]
+
+Using a list comprehension, give an expression that calculates the sum 17 + 2? + ... 100? of the first one hundred
+
+integer squares.
+
+total = sum [x*®2 | x <- [1..100]]
+
+In a similar way to the function /ength, show how the library function replicate :: Int 5s a = [a]
+
+that produces a list of identical elements can be defined using a list comprehension. For example:
+> replicate 3 True
+[True, True, True]
+
+replicate :: Int = a = [a]
+replicate nx = [x | _ <- [1..n]]
+
+A triple (x, y, z) of positive integers is Pythagorean if x* + y* = z?. Using a list comprehension, define a function
+
+pyths :: Int > [(Int, Int, Int) ] that returns the list of all Pythagorean triples whose components
+are at most a given limit. For example:
+> pyths 10
+
+[(3, 4, 5), (4, 3, 3), (6, 8, 10), (8, 6, 10)]
+
+pyths i: Int 4 [(Int, Int, Int) ]
+
+pyths n = [(x,y,z) | x <- [l..n],
+y <- [1..n],
+z<- [l..n],
+
+x°2 + y°2 == 2%2]
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+
+A positive integer is perfect if it equals the sum of its factors, excluding the number itself. Using a list
+comprehension and the function factors, define a function perfects :: Int + [Int] that returns the list of
+
+all perfect numbers up to a given limit. For example:
+> perfects 500
+[6, 28, 496]
+
+Perfects n = [x | x <- [1..n], sum (init(factors x)) == x]
+
+The scalar product of two lists of integers xs and ys of length n is given by the sum of the products of
+
+corresponding integers:
+n-1
+> Gs * Si)
+i=0
+
+Define a function scalarproduct :: [Int] -> [Int] -> Int that returns the scalar product
+of two lists. For example:
+> scalarproduct [1,2,3] [4,5,6]
+
+32
+scalarproduct :: [Int] -> [Int] -> Int
+scalarproduct xs ys = sum [x*y | (x,y) <- zip xs ys]
+
+Write factorial function using recursion.
+
+fac :: Int -> Int
+fac 0 = 1
+fac n =n * fac (n - 1)
+
+Write the product function using recursion.
+
+product. [] = 1
+)
+
+]
+product. (mins) =n * product ns
+
+Write a function that calculates the nth Fibonacci number.
+
+fib :: Int -> Int
+
+fib 0=0
+
+fib1l-=1
+
+fib n = fib (n - 2) + fib (n - 1)
+
+Write a function that implements quicksort.
+
+qsort [] = []
+qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
+where
+smaller = [a | a <- xs, a <=x]
+larger = [b | b <- xs, b> x]
+
+Write a program to check whether a number is even. (PROLOG)
+checkeven(N):-M is N//2,N=:=2*M.
+22.
+
+23.
+
+24.
+
+25.
+
+26.
+
+Define and test a predicate which takes two arguments, both numbers, and calculates and outputs the
+following values: (a) their average, (b) the square root of their product and (c) the larger of (a) and (b).
+(PROLOG)
+
+pred(A,B):-X is (A+B)/2,write('Average is: '),write(X),nl, Y is
+sqrt (A*B), write('Square root of product is: '),write(Y),nl,
+Z is max(X,Y),write('Larger is: '),write(Z),nl.
+
+Write a program to print numbers from X to Y, both inclusive. (PROLOG)
+
+output values(Last, Last):- write (Last),nl, write('end of example'),nl.
+output values (First, Last) :-First=\=Last, write(First),nl, N is
+First+l, output _values(N, Last).
+
+Define a predicate to find the sum of the integers from 1 to N (say for N = 100). (PROLOG)
+
+sumto(1,1).
+sumto(N,S):-N>1,N1 is N-1,sumto(N1,S1),S is S1+N.
+
+?- sumto(100,N).
+N= 5050
+
+Define a predicate to output the squares of the first N integers, one per line. (PROLOG)
+
+writesquares(1):-write(1),nl.
+writesquares(N):-N>1,N1 is N-1,writesquares(N1), Nsq is N*N,
+write (Nsq),nl.
+
+?- writesquares(6).
+
+4
+9
+16
+25
+36
+yes
+
+Define a predicate to output the values of the squares of the integers from N1 to N2 inclusive and test it
+with N1 =6 and N2 = 12. (PROLOG)
+
+outsquare (N1,N2):-N1>N2.
+outsquare (N1,N2):- write (N1),write(' squared is '),Square is N1*N1,
+write (Square),nl, M is N1+1,outsquare (M,N2).
+
+?- outsquare(6,12).
+6 squared is 36
+
+7 squared is 49
+
+8 squared is 64
+
+9 squared is 81
+
+10 squared is 100
+11 squared is 121
+12 squared is 144
+yes
+27. Classify anumber as zero, or positive or negative. (PROLOG)
+
+classify(0,zero).
+classify(N, negative) :-N<0o.
+classify(N, positive).
+
+Example:
+?- classify(0,N).
+
+N=zero
+
+?- classify(-4,X).
+X = negative
+
+28. Write a predicate to calculate the factorial. (PROLOG)
+
+factorial(1,1).
+factorial (N,Nfact):-N1l is N-1,factorial (N1,Nfactl),Nfact is N*Nfactl.
+
+?- factorial(6,N).
+N=720
+
+(Note: You will get 2 Haskell programs & 1 PROLOG program in your practical exam).
+
